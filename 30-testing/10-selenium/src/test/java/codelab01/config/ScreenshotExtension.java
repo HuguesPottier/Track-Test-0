@@ -14,20 +14,28 @@ import java.util.Optional;
 
 public class ScreenshotExtension implements TestWatcher {
 
+    public static final String FAILED_PREFIX = "FAILED";
+
     @Override
     public void testFailed(ExtensionContext context, Throwable cause) {
-        WebDriver driver = SpringExtension.getApplicationContext(context).getBean(WebDriver.class);
+        takeScreenshot(
+                SpringExtension.getApplicationContext(context).getBean(WebDriver.class),
+                getFileName(context, FAILED_PREFIX)
+        );
+    }
+
+    private void takeScreenshot(WebDriver driver, String fileName) {
         Optional<File> screenshotFile = getScreenshotFile(driver);
-        screenshotFile.ifPresent(screenshot -> copy(screenshot, getDestinationFile(context)));
+        screenshotFile.ifPresent(screenshot -> copy(screenshot, getDestinationFile(fileName)));
     }
 
-    private File getDestinationFile(ExtensionContext context) {
+    private File getDestinationFile(String fileName) {
         new File("target/selenium").mkdirs();
-        return new File("target/selenium/" + getFileName(context));
+        return new File("target/selenium/" + fileName);
     }
 
-    private String getFileName(ExtensionContext context) {
-        return context.getRequiredTestClass().getSimpleName() + "-" + context.getRequiredTestMethod().getName() + "-screenshot.png";
+    private String getFileName(ExtensionContext context, String prefix) {
+        return prefix + "-" + context.getRequiredTestClass().getSimpleName() + "-" + context.getRequiredTestMethod().getName() + "-screenshot.png";
     }
 
     private void copy(File originalFile, File destinationFile) {

@@ -21,8 +21,4 @@ public class FirstTest {
         homePage.open().goToLogin();
     }
 
-    @AfterEach
-    void tearDown() {
-
-    }
 }
