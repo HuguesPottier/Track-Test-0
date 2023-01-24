@@ -17,7 +17,6 @@ public class TestConfig {
     @Scope("singleton")
     public WebDriver webDriver() {
         System.setProperty("webdriver.chrome.driver", getChromeDriverUrl().getPath());
-        System.out.println("init webdriver");
         ChromeDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));

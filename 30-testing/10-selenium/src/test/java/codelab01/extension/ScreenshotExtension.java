@@ -1,4 +1,4 @@
-package codelab01.config;
+package codelab01.extension;
 
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestWatcher;

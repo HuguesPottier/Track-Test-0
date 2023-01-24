@@ -1,9 +1,8 @@
-package codelab01.tests;
+package codelab01.suite.tests;
 
-import codelab01.config.ScreenshotExtension;
+import codelab01.extension.ScreenshotExtension;
 import codelab01.config.TestConfig;
 import codelab01.pages.HomePage;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
