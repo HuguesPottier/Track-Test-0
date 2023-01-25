@@ -18,4 +18,12 @@ The goal of this codelab is to use a Spring Beans in your tests.
 4. Autowire the Counter Bean object in FirstCounterTest instead of using `new Counter()`
 5. Run FirstCounterTest again. It should work.
 6. Repeat the same steps for SecondCounterTest
-7. Run TestSuite. Everything should succeed now.
+7. Run TestSuite. Everything should pass now.
+
+## Component Scan
+1. An alternative to bean definitions is to create them automatically with a component scan.
+2. Make Counter a component. What was the annotation?
+3. Let spring boot scan do a component scan. Add the correct annotation to TestConfig.
+4. Run the TestSuite. It will fail with a BeanDefinitionOverrideException.
+   1. The reason is that we have two bean definitions for Counter
+5. Remove the original bean definition and run TestSuite again. Everything should pass.
