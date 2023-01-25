@@ -8,10 +8,10 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>30-testing</artifactId>
+    <artifactId>30-spring-boot</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>10-selenium</module>
+        <module>spring-boot-codelab01</module>
     </modules>
 </project>
