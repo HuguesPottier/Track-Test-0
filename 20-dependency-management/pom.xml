@@ -14,5 +14,6 @@
     <modules>
         <module>dependency-codelab01</module>
         <module>dependency-codelab02</module>
+        <module>dependency-codelab03</module>
     </modules>
 </project>
