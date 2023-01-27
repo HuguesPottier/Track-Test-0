@@ -1,8 +1,5 @@
 package com.switchfully.config;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class Counter {
 
     private int counter = 0;

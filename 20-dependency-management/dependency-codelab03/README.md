@@ -11,7 +11,7 @@ is mostly to store your configuration.
 Luckily, there are some dependencies that can make your life easier, namely: commons-io (made by Apache) and guava (made
 by Google).
 
-## Tasklist
+## Task list
 
 1. Add the commons-io dependency.
 2. Add the guava dependency.

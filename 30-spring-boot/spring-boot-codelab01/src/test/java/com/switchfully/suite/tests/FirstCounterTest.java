@@ -11,12 +11,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest(classes = TestConfig.class)
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class FirstCounterTest {
 
-    @Autowired
-    private Counter counter;
+    private Counter counter =  new Counter();
 
     @Test
     @Order(1)

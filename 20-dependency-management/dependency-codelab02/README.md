@@ -17,7 +17,7 @@ Bavokoop 4139 IK
 The dependency that we'll be using is: [Java Faker](https://github.com/DiUS/java-faker).
 
 
-## Tasklist
+## Task list
 1. Add the Java Faker dependency
 2. Complete the Maven project structure for this codelab. (What is missing?)
 3. Add a Main.java file to your project.

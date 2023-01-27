@@ -5,7 +5,7 @@ The goal of this codelab is to use a Spring Beans in your tests.
 ## Context
 
 
-## Taskslist
+## Task list
 1. Run TestSuite. If everything is set up correctly SecondCounterTest should fail.
    1. The reason that TestSuite fails is that both tests use a different Counter object.
    2. How can we make sure that all tests use the same object? Spring Beans!
