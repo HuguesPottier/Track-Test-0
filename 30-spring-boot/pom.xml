@@ -14,5 +14,6 @@
     <modules>
         <module>spring-boot-codelab01</module>
         <module>spring-boot-codelab02</module>
+        <module>spring-boot-codelab03</module>
     </modules>
 </project>

@@ -8,7 +8,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>spring-boot-codelab02</artifactId>
+    <artifactId>spring-boot-codelab03</artifactId>
 
     <dependencies>
     </dependencies>

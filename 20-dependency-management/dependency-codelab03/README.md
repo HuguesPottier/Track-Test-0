@@ -46,3 +46,5 @@ Take a look at `student-scores-advanced.csv` to see the full data set.
 4. Write these results in a file called `out/report.txt`
 
 Your code should work independently of the data (so you should be able to add or remove a course, and it should still work).
+
+There might be extra dependencies that help you out. Look for `csv parsers` to help you out.
