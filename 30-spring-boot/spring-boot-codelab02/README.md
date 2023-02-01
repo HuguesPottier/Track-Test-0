@@ -1,4 +1,4 @@
-# Spring Boot Codelab 01
+# Spring Boot Codelab 02
 
 The goal of this codelab is to read properties from a file.
 
