@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 18px;
+    font-family: sans-serif;
+    color: #97AA5A;
+    background: linear-gradient(to left, #97AA5A, #68753E) !important;
+}
+
+.bg-switchfully {
+    background: #30361C;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 50px;
+    background: #30361C;
+}
+
+.main {
+    margin-top: 2em;
+    min-height: 37em;
+}
+
+.highlight {
+    box-shadow: 0 0 10px red;
+    border: 1px solid red;
+}
+
+.highlight-transition {
+    transition: box-shadow 1s, border 1s;
+}

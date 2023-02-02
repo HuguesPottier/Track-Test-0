@@ -21,7 +21,7 @@
         <module>10-programming-fundamentals</module>
         <module>20-dependency-management</module>
         <module>30-spring-boot</module>
-        <module>40-testing</module>
+        <module>50-testing</module>
     </modules>
 
     <dependencies>
