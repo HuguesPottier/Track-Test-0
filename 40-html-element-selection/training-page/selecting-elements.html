@@ -14,9 +14,9 @@
     <nav class="navbar navbar-light bg-switchfully">
         <div class="container-fluid">
             <span class="navbar-brand h1 text-white">Selecting elements</span>
-            <form class="col-4 d-flex" id="xpath-form">
-                <label for="xpath-query" hidden>XPath Query</label>
-                <input class="form-control me-2" type="search" id="xpath-query" placeholder="xpath query"/>
+            <form class="d-flex" id="id-form">
+                <label for="id-query" hidden>Id Query</label>
+                <input class="form-control me-2" type="search" id="id-query" placeholder="id query"/>
                 <button class="btn btn-outline-success me-2" type="submit">Search</button>
             </form>
             <form class="col-4 d-flex" id="css-form">
@@ -24,10 +24,15 @@
                 <input class="form-control me-2" type="search" id="css-query" placeholder="css query"/>
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
+            <form class="col-4 d-flex" id="xpath-form">
+                <label for="xpath-query" hidden>XPath Query</label>
+                <input class="form-control me-2" type="search" id="xpath-query" placeholder="xpath query"/>
+                <button class="btn btn-outline-success me-2" type="submit">Search</button>
+            </form>
         </div>
     </nav>
 </header>
-<main class="container">
+<main class="container main">
     <section class="col-12 mx-auto mt-2">
         <div class="row">
             <div class="col-3 mb-2">
@@ -189,10 +194,10 @@
                     </div>
                     <div class="card-body bg-dark-subtle">
                         <ul id="list" class="list-group">
-                            <li class="list-group-item">These</li>
-                            <li class="list-group-item">Are</li>
-                            <li class="list-group-item">List</li>
-                            <li class="list-group-item">Items</li>
+                            <li class="list-group-item">1</li>
+                            <li class="list-group-item">2</li>
+                            <li class="list-group-item">3</li>
+                            <li class="list-group-item">4</li>
                         </ul>
                     </div>
                 </div>
@@ -212,12 +217,12 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td>Column 1 1</td>
-                                <td>Column 1 2</td>
+                                <td>11</td>
+                                <td>21</td>
                             </tr>
                             <tr>
-                                <td>Column 2 1</td>
-                                <td>Column 2 2</td>
+                                <td>12</td>
+                                <td>22</td>
                             </tr>
                             </tbody>
                         </table>
@@ -232,11 +237,37 @@
 </footer>
 
 <script>
+    let tableArray = ['Ball', 'House', 'Tree', 'Snow'].sort(() => 0.5 - Math.random());
+    let tableElements = document.querySelectorAll("tbody tr td");
+    for (let index = 0; index < tableElements.length; index++) {
+        tableElements[index].innerHTML = tableArray[index];
+    }
+</script>
+<script>
+    let array = ['Soup', 'Sugar', 'Salt', 'Salmon'].sort(() => 0.5 - Math.random());
+    let listElements = document.querySelectorAll("ul li");
+    for (let index = 0; index < listElements.length; index++) {
+        listElements[index].innerHTML = array[index];
+    }
+</script>
+
+<script>
     function highlightElement(selectedElement) {
         selectedElement.classList.add("highlight-transition");
         selectedElement.classList.add("highlight");
         setTimeout(() => selectedElement.classList.remove("highlight"), 5000);
     }
+</script>
+<script>
+    let idForm = document.getElementById("id-form");
+    let idQuery = document.getElementById("id-query");
+
+    idForm.addEventListener("submit", (event) => {
+        let selectedElement = document.getElementById(idQuery.value);
+        if (!selectedElement) alert('Could not find element with id \'' + idQuery.value + '\'');
+        highlightElement(selectedElement)
+        event.preventDefault();
+    });
 </script>
 
 <script>
