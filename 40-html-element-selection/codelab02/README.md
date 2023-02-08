@@ -37,11 +37,14 @@ Your browser can construct a selector for you:
 6. You have a css selector for the element!
 
 Be careful! While the browser will create a valid selector for you, it is always good to check that the selector makes sense.
+Especially, avoid using elements in your selector that have a high risk to change. 
+You don't want to constantly fix all your tests every time a new paragraph is added to the webpage.
+
 Also, using this method you can only select one element at a time. Sometimes you'll need to select multiple elements.
 
 How to select multiple elements?
 1. Learn the css selector syntax
-2. Construct a selector manually with your knowledge of the webpage
+2. Construct a selector manually with your knowledge of the webpage.
 
 ## Task list
 
