@@ -15,6 +15,7 @@
     <modules>
         <module>selenium-codelab01</module>
         <module>selenium-codelab02</module>
+        <module>selenium-codelab03</module>
         <module>final-result</module>
     </modules>
 

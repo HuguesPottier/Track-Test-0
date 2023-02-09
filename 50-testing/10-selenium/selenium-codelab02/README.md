@@ -1,74 +1,61 @@
 # Creating your first selenium test
 
-The goal of this codelab is to learn how to start up the selenium driver
+The goal of this codelab is to learn how to create a test using the Selenium Driver
 
-## Context
+## Task list
 
-To write a selenium test we need to be able to interact with a browser from our java code.
-This is done with a Driver object. This object will give you all the necessary tools to run your tests.
+### Opening a URL
+
+Let's open a web page
+1. Go to `MyFirstSeleniumTest`
+2. Call `driver.get(<url>)`
+    1. Fill in the url of element-selection page that we've been using so far.
+3. Run the test
+4. The page should open in the Selenium Driver window
+
+### Selecting an element
+
+Let's select an element on the page that we've opened.
+1. Call `driver.findElement(By.id("<id>"))`
+   1. Find the id of the paragraph element in the html page
+   2. Replace `<id>` with the correct id
+2. Save the selected element in a variable
+3. Print out the text of the selected element using `getText()`
+4. Run the test. It should print out the text "I am some text in a paragraph".
+
+The `By` class has, besides `id()`, other methods like `cssSelector()` and `xpath()` allowing you to select elements in different ways.  
+
+### Asserting
+1. Using AssertJ add an assertion to check that the text is equal to "I am some text in a paragraph"
+
+### Closing the browser
+Until now, everytime we've run a test a new window has popped open and has stayed open, even after test has finished.
+To properly close the browser, you'll need to call the `quit()` method on the driver.
+
+1. Close the browser automatically after the test has run
 
 
-## Adding the Selenium 
-1. Install the Driver library.
-   1. To get access to the Driver class we need to add the right selenium dependency.
-   2. Add to following to your pom file  
-   ```xml
-     <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <scope>test</scope>
-     </dependency> 
-   ``` 
-   3. Refresh maven
-   4. You should now have access to Driver classes of the following browsers: Chromium, Chrome, Edge, Firefox and Safari.
-   
-2. Use the Driver
-   1. Go to `StartingSeleniumDriverTest` and inside the first test create a new Driver `ChromeDriver chromeDriver = new ChromeDriver()`
-   2. Run your test
-   3. You'll get an error like: `The path to the driver executable The path to the driver executable must be set by the webdriver.chrome.driver system property`
+### A new test
+1. Using the same steps, write a new test that will assert that the text of the span is equal to "I am some text in a span"
 
-## The browser driver
-What is happening? Well, to use the Selenium Driver we need to have a driver from Chrome as well.
-Yes, you read that right, the driver needs a driver.
+### Interacting with elements
+Besides reading text of elements, you can interact with elements like input fields and buttons.
 
-This driver needs to be downloaded manually and saved somewhere in your project. 
-Depending on the browser that you're using and the version of that browser, you'll need to install a different driver.
-Since browsers are updated regularly, you'll need to reinstall this driver often.
-
-Where can you get this driver?
-Selenium has a nice list you can find [here](https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/#quick-reference).
-Be sure to pick the version of the browser corresponding to the version of the browser you've installed on your laptop.
-
-This process is quite annoying, but luckily you don't have to repeat it too often.
-Still, Selenium is working on the Selenium Manager project to make this step automatic.
-Since Selenium Manager is still in Beta we'll not cover it in this course.
-
-## Task list (continued)
-1. Installing the browser driver
-   1. Download the correct browser driver
-   2. Extract the zip
-   3. The executable that is inside needs to be copied to resources/drivers
-2. Tell selenium where it can find our newly downloaded driver
-   1. Go back to `StartingSeleniumDriverTest`
-   2. Add the following line **before** creating the ChromeDriver: `System.setProperty("webdriver.chrome.driver", getChromeDriverUrl().getPath());`
-   3. Add the following method to your test class 
-   ```java
-   public URL getChromeDriverUrl() {
-        try {
-            return ResourceUtils.getURL("classpath:drivers/<driver-file-name>");
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    } 
-   ```
-   4. Replace `<driver-file-name>` with the name of your browser driver.
-   5. Run your test again.
-   6. If everything works correctly, a browser window should pop open and the test should succeed
-
+Let's create a test that will add a new element to the list.
+1. Write code to select the "new element" input field
+2. Fill in "Strawberry" in the selected element. You'll need to use the `sendKeys()` method.
+3. Select the `Add Element` button and click on it using the `click()` method.
+   1. There is no id on the button, so you'll need to use a different technique to select it.
+4. Assert that the last element in the list is equal to "Strawberry"
+   1. Select the last element in the list. Xpath is your friend here.
+   2. Assert that the text of that element is equal to "Strawberry"
+5. Make sure to quit your driver
 
 ## Summary
-In this codelab you've learned how to install and start a Selenium Driver
+
+In this codelab you've learned how to write tests using Selenium.
 
 ## What's next?
-In the next chapter we'll see how we can use the Selenium Driver to write a simple test
+
+Since our code is a bit of a mess now, with a lot of duplication, we'll see how to simplify our code in the next codelab.
 
