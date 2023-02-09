@@ -41,7 +41,9 @@
                         <label class="h4">A Button</label>
                     </div>
                     <div class="card-body bg-dark-subtle">
-                        <button id="button" type="submit" class="btn btn-primary">Button</button>
+                        <button id="button" type="submit" class="btn btn-primary"
+                                onclick="alert('You\'ve pressed a button!')">Button
+                        </button>
                     </div>
                 </div>
             </div>
@@ -51,7 +53,7 @@
                         <label class="h4">A Link</label>
                     </div>
                     <div class="card-body bg-dark-subtle">
-                        <a id="link" class="btn btn-secondary" href="#">Link</a>
+                        <a id="link" class="btn btn-secondary" href="link.html">Link</a>
                     </div>
                 </div>
 
@@ -193,12 +195,19 @@
                         <label class="h4">A List</label>
                     </div>
                     <div class="card-body bg-dark-subtle">
-                        <ul id="list" class="list-group">
-                            <li class="list-group-item">1</li>
-                            <li class="list-group-item">2</li>
-                            <li class="list-group-item">3</li>
-                            <li class="list-group-item">4</li>
-                        </ul>
+                        <div>
+                            <ul id="list" class="list-group">
+                                <li class="list-group-item">1</li>
+                                <li class="list-group-item">2</li>
+                                <li class="list-group-item">3</li>
+                                <li class="list-group-item">4</li>
+                            </ul>
+                        </div>
+                        <form onsubmit="addItem(); return false;">
+                            <label class="form-label" for="add-item" hidden>Add an element to the list</label>
+                            <input id="add-item" class="form-control" type="text" placeholder="new element"/>
+                            <button class="btn btn-primary mt-2">Add Element</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -240,9 +249,9 @@
     let firstColumn = ['User 1', 'User 2'].sort(() => 0.5 - Math.random());
     let secondColumn = ['Sea', 'Snow'].sort(() => 0.5 - Math.random());
     let tableElements = document.querySelectorAll("tbody tr td");
-    for (let index = 0; index < tableElements.length; index+=2) {
-            tableElements[index].innerHTML = firstColumn[index/2];
-            tableElements[index + 1].innerHTML = secondColumn[index/2];
+    for (let index = 0; index < tableElements.length; index += 2) {
+        tableElements[index].innerHTML = firstColumn[index / 2];
+        tableElements[index + 1].innerHTML = secondColumn[index / 2];
     }
 </script>
 <script>
@@ -250,6 +259,19 @@
     let listElements = document.querySelectorAll("ul li");
     for (let index = 0; index < listElements.length; index++) {
         listElements[index].innerHTML = array[index];
+    }
+</script>
+
+<script>
+    let list = document.getElementById("list")
+    let itemToAdd = document.getElementById("add-item");
+
+    function addItem() {
+        let li = document.createElement("li");
+        li.classList.add("list-group-item");
+        li.appendChild(document.createTextNode(itemToAdd.value));
+        list.appendChild(li);
+        itemToAdd.value = '';
     }
 </script>
 
