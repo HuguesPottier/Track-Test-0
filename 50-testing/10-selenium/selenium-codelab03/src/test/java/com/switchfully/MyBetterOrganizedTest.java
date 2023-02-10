@@ -1,57 +1,72 @@
 package com.switchfully;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.springframework.util.ResourceUtils;
 
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.util.List;
 
 public class MyBetterOrganizedTest {
 
+    ElementSelectionPage elementSelectionPage;
+    ChromeDriver driver;
+
+    @BeforeEach
+    void setUp() {
+        System.setProperty("webdriver.chrome.driver", getChromeDriverUrl().getPath());
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        elementSelectionPage = new ElementSelectionPage(driver);
+        PageFactory.initElements(driver, elementSelectionPage);
+    }
+
+    @AfterEach
+    void tearDown() {
+        driver.quit();
+    }
+
     @Test
     void aSeleniumTest() {
-        System.setProperty("webdriver.chrome.driver", getChromeDriverUrl().getPath());
-        ChromeDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://archive.switchfully.com/track/test/element-selection/");
-        WebElement element = driver.findElement(By.id("paragraph"));
-        String text = element.getText();
+        String text = elementSelectionPage.open()
+                .getParagraphText();
+
         Assertions.assertThat(text).isEqualTo("I am some text in a paragraph");
-        driver.quit();
     }
 
     @Test
     void anotherSeleniumTest() {
-        System.setProperty("webdriver.chrome.driver", getChromeDriverUrl().getPath());
-        ChromeDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://archive.switchfully.com/track/test/element-selection/");
-        WebElement element = driver.findElement(By.id("paragraph"));
-        String text = element.getText();
-        Assertions.assertThat(text).isEqualTo("I am some text in a paragraph");
-        driver.quit();
+        String text = elementSelectionPage.open()
+                .getSpanText();
+
+        Assertions.assertThat(text).isEqualTo("I am some text in a span");
     }
 
     @Test
     void addingAnElementToTheList() {
-        System.setProperty("webdriver.chrome.driver", getChromeDriverUrl().getPath());
-        ChromeDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://archive.switchfully.com/track/test/element-selection/");
+        List<String> itemList = elementSelectionPage.open()
+                .addListItem("Strawberry")
+                .getListItemList();
 
-        WebElement addItem = driver.findElement(By.id("add-item"));
-        addItem.sendKeys("A new element");
+        Assertions.assertThat(itemList.get(itemList.size() - 1)).isEqualTo("Strawberry");
+    }
 
-        WebElement addItemButton = driver.findElement(By.xpath("//button[text()='Add Element']"));
-        addItemButton.click();
+    @Test
+    void addingTwoElementsToTheList() {
+        List<String> listItemList = elementSelectionPage.open()
+                .addListItem("Strawberry")
+                .addListItem("Stock")
+                .getListItemList();
 
-        WebElement lastListItem = driver.findElement(By.xpath("//ul/li[last()]"));
-        Assertions.assertThat(lastListItem.getText()).isEqualTo("A new element");
-        driver.quit();
+        Assertions.assertThat(listItemList.get(listItemList.size() - 2)).isEqualTo("Strawberry");
+        Assertions.assertThat(listItemList.get(listItemList.size() - 1)).isEqualTo("Stock");
     }
 
     public URL getChromeDriverUrl() {
