@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.PageFactory;
 import org.springframework.util.ResourceUtils;
 
 import java.io.FileNotFoundException;
@@ -16,57 +15,66 @@ import java.util.List;
 
 public class MyBetterOrganizedTest {
 
-    ElementSelectionPage elementSelectionPage;
-    ChromeDriver driver;
-
-    @BeforeEach
-    void setUp() {
+    @Test
+    void aSeleniumTest() {
         System.setProperty("webdriver.chrome.driver", getChromeDriverUrl().getPath());
-        driver = new ChromeDriver();
+        ChromeDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
-        elementSelectionPage = new ElementSelectionPage(driver);
-        PageFactory.initElements(driver, elementSelectionPage);
-    }
-
-    @AfterEach
-    void tearDown() {
+        driver.get("https://archive.switchfully.com/track/test/element-selection/");
+        WebElement paragraph = driver.findElement(By.id("paragraph"));
+        Assertions.assertThat(paragraph.getText()).isEqualTo("I am some text in a paragraph");
         driver.quit();
     }
 
     @Test
-    void aSeleniumTest() {
-        String text = elementSelectionPage.open()
-                .getParagraphText();
-
-        Assertions.assertThat(text).isEqualTo("I am some text in a paragraph");
-    }
-
-    @Test
     void anotherSeleniumTest() {
-        String text = elementSelectionPage.open()
-                .getSpanText();
+        System.setProperty("webdriver.chrome.driver", getChromeDriverUrl().getPath());
+        ChromeDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://archive.switchfully.com/track/test/element-selection/");
+        WebElement span = driver.findElement(By.id("span"));
 
-        Assertions.assertThat(text).isEqualTo("I am some text in a span");
+        Assertions.assertThat(span.getText()).isEqualTo("I am some text in a span");
+        driver.quit();
     }
 
     @Test
     void addingAnElementToTheList() {
-        List<String> itemList = elementSelectionPage.open()
-                .addListItem("Strawberry")
-                .getListItemList();
+        System.setProperty("webdriver.chrome.driver", getChromeDriverUrl().getPath());
+        ChromeDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://archive.switchfully.com/track/test/element-selection/");
+        WebElement addItem = driver.findElement(By.id("add-item"));
+        addItem.sendKeys("Strawberry");
 
-        Assertions.assertThat(itemList.get(itemList.size() - 1)).isEqualTo("Strawberry");
+        WebElement addItemButton = driver.findElement(By.xpath("//button[text()='Add Element']"));
+        addItemButton.click();
+
+        WebElement lastListItem = driver.findElement(By.xpath("//ul/li[last()]"));
+        Assertions.assertThat(lastListItem.getText()).isEqualTo("Strawberry");
+        driver.quit();
     }
 
     @Test
     void addingTwoElementsToTheList() {
-        List<String> listItemList = elementSelectionPage.open()
-                .addListItem("Strawberry")
-                .addListItem("Stock")
-                .getListItemList();
+        System.setProperty("webdriver.chrome.driver", getChromeDriverUrl().getPath());
+        ChromeDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://archive.switchfully.com/track/test/element-selection/");
+        WebElement addItem = driver.findElement(By.id("add-item"));
+        addItem.sendKeys("Strawberry");
 
-        Assertions.assertThat(listItemList.get(listItemList.size() - 2)).isEqualTo("Strawberry");
-        Assertions.assertThat(listItemList.get(listItemList.size() - 1)).isEqualTo("Stock");
+        WebElement addItemButton = driver.findElement(By.xpath("//button[text()='Add Element']"));
+        addItemButton.click();
+
+        addItem.sendKeys("Stock");
+        addItemButton.click();
+
+        WebElement previousLastListItem = driver.findElement(By.xpath("//ul/li[last() - 1]"));
+        WebElement lastListItem = driver.findElement(By.xpath("//ul/li[last()]"));
+        Assertions.assertThat(previousLastListItem.getText()).isEqualTo("Strawberry");
+        Assertions.assertThat(lastListItem.getText()).isEqualTo("Stock");
+        driver.quit();
     }
 
     public URL getChromeDriverUrl() {

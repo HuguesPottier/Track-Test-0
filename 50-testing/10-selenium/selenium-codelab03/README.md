@@ -46,7 +46,7 @@ Think of a login. If we are writing hundreds of test for an application, then ch
 What we can do is repeating the code for the login procedure for all these tests. 
 If that happens we're in big trouble. Because if somebody changes the way the log in works, all our tests need to be rewritten.
 
-Wouldn't it be nice that we can write `login("username","password")` from wherever we like and it just works? How do we organize such a thing?
+Wouldn't it be nice that we can write `login("username","password")` from wherever we like, and it just works? How do we organize such a thing?
 The conventional way of doing this is with the [Page Object Model](https://www.selenium.dev/documentation/test_practices/encouraged/page_object_models/).
 
 The Page Object Model is a design pattern where all the code that is needed to interact with a page is centralized in a java class.
@@ -56,13 +56,70 @@ What you're doing is essentially making a model of your webpage in a class.
 Let's make a page class together.
 
 1. Start by making a class for our element-selection page. Typically, page classes have the Page suffix. So `ElementSelectionPage` would be a good name for our class.
-2. A page will do a lot of interactions with a Selenium driver. So make a field and constructor for the ChromeDriver 
+2. A page will need a Selenium driver. So make a field and constructor for the ChromeDriver.
+3. Create an `open()` method in the page class. This method should open our element-selection html-page with the driver.
+4. Back to `MyBetterOrganizedTest`. Create a field of type ElementSelectionPage and initialize it in the SetUp method.
+5. In every test instead of opening the element-selection html-page, call the `open()` method on the page field.
+6. Run your tests. They should still work.
 
+Ok, we've moved the opening of the html page away from our tests. What else can we move?
+
+Let's move selecting the paragraph element away from our test and into our Page class.
+1. Make a method `getParagraphText()` in your page class.
+   1. In this method you need to select the paragraph element
+   2. Return the text of that element
+2. In your test replace selecting the paragraph element and getting its text with the getParagraph element.
+
+In similar fashion create the following methods in the Page class:
+- `getSpanText()` which will return the text of the span element
+- `addListItem(String newListItemText)` which will fill in the input field and press the button in one method call
+- `List<String> getListItemList()` that will return the list of items in the List element as a list of strings.
+
+After creating each method, replace the code in the tests with the appropriate method call. 
+When finished all your tests should still work and do their calls to the driver via the Page class.
+
+That's it. We've created our first page class. These kind of classes will provide much needed structure to our selenium tests.
+One last word of advice: the methods in your page classes should never return a WebElement or anything else from the selenium library.
+This way you when selenium makes changes to their library you limit the impact of that change to your page classes.
+
+### The PageFactory
+An improvement that you can make to Page classes is with the PageFactory. 
+The page factory allows you to replace selecting elements with code with selecting elements with annotations.
+
+An example:
+```java
+WebElement paragraph = driver.findElement(By.id("paragraph"));
+```
+becomes
+```java
+@FindBy(how = ID, using = "paragraph")
+private WebElement paragraph;
+```
+
+You can activate this feature by calling:
+```java
+PageFactory.initElements(driver, elementSelectionPage);
+```
+
+Let's try out this feature.
+1. Add `PageFactory.initElements(driver, elementSelectionPage);` as the last line in the setUp method of your test.
+2. For every `findElement()` method call in the Page class
+   1. Create a WebElement field
+   2. Add the correct `@FindBy` annotation
+   3. Use the field instead of the local variable in your method
+3. As always run your tests if you're done to see if everything still works. 
+
+### (Extra) Fluent page object model
+A last way to improve your Page classes is implementing the fluent interface pattern.
+1. Lookup what the fluent interface pattern is
+2. Adapt your page so that it implements this pattern
 
 ## Summary
 
-In this codelab you've learned how to write tests using Selenium.
+In this codelab we've seen how we can use page classes to improve our test design.
 
 ## What's next?
 
-Since our code is a bit of a mess now, with a lot of duplication, we'll see how to simplify our code in the next codelab.
+We now can create nice and readable test that are easy to adapt when developers need to make changes.
+However, a large part of our setup is still done in our setUp and tearDown method and needs to be repeated for every test class we make.
+Next chapter we'll see how Spring Boot can simplify our configuration.
