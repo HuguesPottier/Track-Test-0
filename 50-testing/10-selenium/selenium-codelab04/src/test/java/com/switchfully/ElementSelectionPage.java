@@ -1,6 +1,5 @@
 package com.switchfully;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
@@ -33,14 +32,12 @@ public class ElementSelectionPage {
         this.driver = driver;
     }
 
-
     public ElementSelectionPage open() {
         driver.get("https://archive.switchfully.com/track/test/element-selection/");
         return this;
     }
 
     public String getParagraphText() {
-        WebElement paragraph = driver.findElement(By.id("paragraph"));
         return paragraph.getText();
     }
 
