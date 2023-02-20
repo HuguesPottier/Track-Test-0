@@ -20,6 +20,6 @@ public class LoginTest {
         homePage.open()
                 .goToLogin()
                 .logIn("koen@mail.com", "passkoen")
-                .asserThatInss("1234567");
+                .assertThatInss("1234567");
     }
 }

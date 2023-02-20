@@ -22,7 +22,7 @@ public class ProfilePage {
         this.chromeDriver = chromeDriver;
     }
 
-    public ProfilePage asserThatInss(String inss) {
+    public ProfilePage assertThatInss(String inss) {
         Assertions.assertThat(inssField.getAttribute("value")).isEqualTo(inss);
         return this;
     }

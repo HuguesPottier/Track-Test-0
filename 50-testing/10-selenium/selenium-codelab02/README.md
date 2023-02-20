@@ -46,6 +46,8 @@ Let's create a test that will add a new element to the list.
 2. Fill in "Strawberry" in the selected element. You'll need to use the `sendKeys()` method.
 3. Select the `Add Element` button and click on it using the `click()` method.
    1. There is no id on the button, so you'll need to use a different technique to select it.
+   2. It might be that your button is not in view when you want to click it. To solve this you can let selenium scroll down a bit.
+      1. new Actions(driver).scrollByAmount(0, 250).perform();
 4. Assert that the last element in the list is equal to "Strawberry"
    1. Select the last element in the list. Xpath is your friend here.
    2. Assert that the text of that element is equal to "Strawberry"
