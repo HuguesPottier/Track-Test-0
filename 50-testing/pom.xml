@@ -13,5 +13,6 @@
 
     <modules>
         <module>10-selenium</module>
+        <module>20-cucumber</module>
     </modules>
 </project>
