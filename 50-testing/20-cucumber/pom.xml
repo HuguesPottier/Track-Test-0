@@ -11,6 +11,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>goal</module>
+        <module>cucumber-full-project</module>
     </modules>
 </project>
