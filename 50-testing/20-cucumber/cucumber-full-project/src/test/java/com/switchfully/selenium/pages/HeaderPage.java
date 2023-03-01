@@ -14,12 +14,18 @@ public class HeaderPage {
 
     private ProfilePage profilePage;
 
+    private RegisterPage registerPage;
+
     @FindBy(how = How.ID, using = "profile-link")
     private WebElement profileLink;
 
-    public HeaderPage(WebDriver webDriver, ProfilePage profilePage) {
+    @FindBy(how = How.ID, using = "register-nav-link")
+    private WebElement registerLink;
+
+    public HeaderPage(WebDriver webDriver, ProfilePage profilePage, RegisterPage registerPage) {
         this.webDriver = webDriver;
         this.profilePage = profilePage;
+        this.registerPage = registerPage;
     }
 
     public ProfilePage goToProfilePage() {
@@ -27,8 +33,15 @@ public class HeaderPage {
         return profilePage;
     }
 
+    public RegisterPage goToRegisterPage() {
+        registerLink.click();
+        return registerPage;
+    }
+
     @PostConstruct
     public void init() {
         PageFactory.initElements(webDriver, this);
     }
+
+
 }

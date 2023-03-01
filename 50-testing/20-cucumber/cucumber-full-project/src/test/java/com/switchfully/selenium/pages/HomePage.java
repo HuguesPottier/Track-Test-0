@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.springframework.stereotype.Component;
 
+import static org.openqa.selenium.support.How.ID;
 import static org.openqa.selenium.support.How.XPATH;
 
 @Component
@@ -16,12 +17,18 @@ public class HomePage {
 
     private LoginPage loginPage;
 
+    private RegisterPage registerPage;
+
     @FindBy(how = XPATH, using = "//a[text()='Login']")
     private WebElement loginLink;
 
-    public HomePage(WebDriver webDriver, LoginPage loginPage) {
+    @FindBy(how = ID, using = "register-nav-button")
+    private WebElement registerLink;
+
+    public HomePage(WebDriver webDriver, LoginPage loginPage, RegisterPage registerPage) {
         this.webDriver = webDriver;
         this.loginPage = loginPage;
+        this.registerPage = registerPage;
     }
 
     public HomePage open() {
@@ -32,6 +39,11 @@ public class HomePage {
     public LoginPage clickLoginLink() {
         loginLink.click();
         return loginPage;
+    }
+
+    public RegisterPage clickRegisterLink() {
+        registerLink.click();
+        return registerPage;
     }
 
     @PostConstruct

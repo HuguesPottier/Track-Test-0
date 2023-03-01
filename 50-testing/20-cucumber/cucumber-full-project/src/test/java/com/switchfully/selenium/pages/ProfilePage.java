@@ -18,6 +18,12 @@ public class ProfilePage {
     @FindBy(how = ID, using = "inss")
     private WebElement inssField;
 
+    @FindBy(how = ID, using = "email")
+    private WebElement emailField;
+
+    @FindBy(how = ID, using = "address")
+    private WebElement addressField;
+
     public ProfilePage(WebDriver webDriver) {
         this.webDriver = webDriver;
     }
@@ -27,8 +33,19 @@ public class ProfilePage {
         return this;
     }
 
+    public ProfilePage assetThatEmail(String username) {
+        Assertions.assertThat(emailField.getAttribute("value")).isEqualTo(username);
+        return this;
+    }
+
+    public ProfilePage assetThatAddress(String address) {
+        Assertions.assertThat(addressField.getAttribute("value")).isEqualTo(address);
+        return this;
+    }
+
     @PostConstruct
     public void init() {
         PageFactory.initElements(webDriver, this);
     }
+
 }

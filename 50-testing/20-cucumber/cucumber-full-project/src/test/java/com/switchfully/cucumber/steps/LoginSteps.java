@@ -1,9 +1,9 @@
 package com.switchfully.cucumber.steps;
 
+import com.switchfully.cucumber.state.LogIn;
 import com.switchfully.selenium.pages.HeaderPage;
 import com.switchfully.selenium.pages.HomePage;
 import com.switchfully.selenium.pages.ProfilePage;
-import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -11,14 +11,13 @@ import io.cucumber.java.en.When;
 public class LoginSteps {
 
     private HomePage homePage;
-
     private HeaderPage headerPage;
-    private ProfilePage profilePage;
+    private LogIn logIn;
 
-    public LoginSteps(HomePage homePage, HeaderPage headerPage, ProfilePage profilePage) {
+    public LoginSteps(HomePage homePage, HeaderPage headerPage, LogIn logIn) {
         this.homePage = homePage;
         this.headerPage = headerPage;
-        this.profilePage = profilePage;
+        this.logIn = logIn;
     }
 
     @Given("I am logged in as {string} with password {string}")
@@ -33,8 +32,8 @@ public class LoginSteps {
         headerPage.goToProfilePage();
     }
 
-    @Then("I can see that the inss is {string}")
-    public void thenICanSeeTheInss(String inss) {
-        profilePage.assertThatInss(inss);
+    @Then("I can log in with these same credentials")
+    public void iCanLogInWithTheseSameCredentials() {
+        iAmLoggedIn(logIn.getRegister().getUsername(), logIn.getRegister().getPassword());
     }
 }
