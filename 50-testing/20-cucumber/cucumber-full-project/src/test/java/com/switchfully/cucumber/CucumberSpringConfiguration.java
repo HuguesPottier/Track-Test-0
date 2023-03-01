@@ -20,11 +20,15 @@ public class CucumberSpringConfiguration {
     @Autowired
     private WebDriverQuitter webDriveQuitter;
 
-    @After
-    public void after(Scenario scenario) {
+    @After(order = 1)
+    public void takeScreenshot(Scenario scenario) {
         if(scenario.isFailed()) {
             screenshotTaker.takeScreenshot(scenario.getName());
         }
+    }
+
+    @After
+    public void closeDriver(Scenario scenario) {
         webDriveQuitter.quit();
     }
 
