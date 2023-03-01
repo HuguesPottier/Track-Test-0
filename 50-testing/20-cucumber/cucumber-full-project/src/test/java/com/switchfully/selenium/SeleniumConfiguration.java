@@ -18,7 +18,7 @@ public class SeleniumConfiguration {
 
     @Bean
     @ScenarioScope
-    /**
+    /*
      * For the most mysterious reason on earth the return type of this method needs to be ChromeDriver
      * If you change the type to WebDriver, the bean will be null when trying to take a screenshot on failure.
      */
