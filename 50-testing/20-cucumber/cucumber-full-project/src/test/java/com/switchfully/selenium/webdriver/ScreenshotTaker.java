@@ -1,6 +1,6 @@
-package com.switchfully.selenium.screenshot;
+package com.switchfully.selenium.webdriver;
 
-import io.cucumber.spring.ScenarioScope;
+import org.assertj.core.api.Assertions;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -26,7 +26,10 @@ public class ScreenshotTaker {
 
     public void takeScreenshot(String fileName) {
         Optional<File> screenshotFile = getScreenshotFile(this.webDriver);
-        screenshotFile.ifPresent(screenshot -> copy(screenshot, getDestinationFile(getFileName(fileName))));
+        screenshotFile.ifPresentOrElse(
+                screenshot -> copy(screenshot, getDestinationFile(getFileName(fileName))),
+                () -> Assertions.fail("Could not take screenshot")
+        );
     }
 
     private File getDestinationFile(String fileName) {

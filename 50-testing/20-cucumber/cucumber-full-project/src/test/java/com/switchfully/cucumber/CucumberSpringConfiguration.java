@@ -1,8 +1,8 @@
 package com.switchfully.cucumber;
 
 import com.switchfully.selenium.SeleniumConfiguration;
-import com.switchfully.selenium.screenshot.ScreenshotTaker;
-import com.switchfully.selenium.screenshot.WebDriverQuitter;
+import com.switchfully.selenium.webdriver.ScreenshotTaker;
+import com.switchfully.selenium.webdriver.WebDriverQuitter;
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
 import io.cucumber.spring.CucumberContextConfiguration;
@@ -18,14 +18,14 @@ public class CucumberSpringConfiguration {
     private ScreenshotTaker screenshotTaker;
 
     @Autowired
-    private WebDriverQuitter webDriveQuiter;
+    private WebDriverQuitter webDriveQuitter;
 
     @After
     public void after(Scenario scenario) {
         if(scenario.isFailed()) {
             screenshotTaker.takeScreenshot(scenario.getName());
         }
-        webDriveQuiter.quit();
+        webDriveQuitter.quit();
     }
 
 }

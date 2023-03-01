@@ -1,4 +1,4 @@
-package com.switchfully.selenium.screenshot;
+package com.switchfully.selenium.webdriver;
 
 import org.openqa.selenium.WebDriver;
 import org.springframework.stereotype.Component;
