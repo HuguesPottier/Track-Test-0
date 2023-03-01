@@ -1,7 +1,6 @@
-package com.switchfully.cucumber.state;
+package com.switchfully.cucumber.data;
 
 import com.github.javafaker.Faker;
-import org.springframework.stereotype.Component;
 
 
 public class Register {

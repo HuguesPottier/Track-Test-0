@@ -16,16 +16,22 @@ public class HeaderPage {
 
     private RegisterPage registerPage;
 
+    private BooksPage booksPage;
+
     @FindBy(how = How.ID, using = "profile-link")
     private WebElement profileLink;
+
+    @FindBy(how = How.XPATH, using = "//a[text()='Books']")
+    private WebElement booksLink;
 
     @FindBy(how = How.ID, using = "register-nav-link")
     private WebElement registerLink;
 
-    public HeaderPage(WebDriver webDriver, ProfilePage profilePage, RegisterPage registerPage) {
+    public HeaderPage(WebDriver webDriver, ProfilePage profilePage, RegisterPage registerPage, BooksPage booksPage) {
         this.webDriver = webDriver;
         this.profilePage = profilePage;
         this.registerPage = registerPage;
+        this.booksPage = booksPage;
     }
 
     public ProfilePage goToProfilePage() {
@@ -38,10 +44,16 @@ public class HeaderPage {
         return registerPage;
     }
 
+    public BooksPage goToBooksPage() {
+        booksLink.click();
+        return booksPage;
+    }
+
     @PostConstruct
     public void init() {
         PageFactory.initElements(webDriver, this);
     }
+
 
 
 }

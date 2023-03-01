@@ -1,5 +1,6 @@
 package com.switchfully.cucumber.state;
 
+import com.switchfully.cucumber.data.Register;
 import io.cucumber.spring.ScenarioScope;
 import org.springframework.stereotype.Component;
 

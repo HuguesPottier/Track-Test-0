@@ -1,7 +1,7 @@
 package com.switchfully.cucumber.steps;
 
 import com.switchfully.cucumber.state.LogIn;
-import com.switchfully.cucumber.state.Register;
+import com.switchfully.cucumber.data.Register;
 import com.switchfully.selenium.pages.HomePage;
 import com.switchfully.selenium.pages.RegisterPage;
 import io.cucumber.java.en.Given;

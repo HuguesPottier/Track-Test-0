@@ -36,4 +36,9 @@ public class LoginSteps {
     public void iCanLogInWithTheseSameCredentials() {
         iAmLoggedIn(logIn.getRegister().getUsername(), logIn.getRegister().getPassword());
     }
+
+    @Given("I am not logged in")
+    public void iAmNotLoggedIn() {
+        homePage.open();
+    }
 }
