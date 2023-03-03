@@ -11,6 +11,8 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>cucumber-codelab01</module>
+<!--        <module>cucumber-codelab02</module>-->
         <module>cucumber-full-project</module>
     </modules>
 </project>
