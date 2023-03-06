@@ -10,7 +10,7 @@ With cucumber your gherkin files can be automatically executed, providing valuab
 So, let's say we have the following simple scenario:
 ```gherkin
 Feature: Basic calculations
-  Scenario: We can add two number together
+  Scenario: We can add two numbers together
     Given The numbers 1 and 2
     When Adding these together
     Then The result will be 3
