@@ -1,4 +1,4 @@
-# My first Cucumber test
+# Make Maven run Cucumber
 
 In this codelab you'll learn how you can make Maven run your Cucumber tests.
 
@@ -88,12 +88,18 @@ You free to choose the name of your tags.
 To exclude certain scenario's you can use `@ExcludeTags(<tag-name>)`
 
 ## Configuration
-Cucumber JUnit has many configuration options that you can explore at [cucumber-junit](https://github.com/cucumber/cucumber-jvm/tree/main/cucumber-junit-platform-engine).
-Want to get rid of the report message at the end of your test?
+Lastly, Cucumber JUnit has many configuration options that you can explore at [cucumber-junit](https://github.com/cucumber/cucumber-jvm/tree/main/cucumber-junit-platform-engine).
+
+For example, want to get rid of this report message at the end of your test?
 
 ![report-message](cucumber-report.png)
 
 Add the following annotation to get rid of it: `@ConfigurationParameter(key = PLUGIN_PUBLISH_QUIET_PROPERTY_NAME, value = "true")`
+
+## (Optional) Multiple feature files
+With the Suite set up we now can run multiple feature files at the same time.
+1. Create a new feature file and add a scenario (you can pick any simple multiplication)
+2. Run the suite. The scenarios of both feature files should run.
 
 ## Summary
 
