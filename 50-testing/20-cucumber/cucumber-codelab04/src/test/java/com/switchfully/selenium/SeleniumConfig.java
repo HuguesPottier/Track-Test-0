@@ -28,6 +28,7 @@ public class SeleniumConfig {
         options.addArguments("--remote-allow-origins=*");
         ChromeDriver driver = new ChromeDriver(options);
         driver.manage().window().maximize();
+
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
         return driver;
     }
