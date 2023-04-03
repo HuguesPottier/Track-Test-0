@@ -31,7 +31,7 @@ There are a few reasons:
         1. However, good agreements need to be made to do this properly
 
 To avoid spending hours discussing ids with your developer team, you can use css selectors and xpath selectors to
-work around this problem.
+work around this problem. That is however for the next codelab. Let's try selecting elements first with ids.
 
 ## Task list
 
