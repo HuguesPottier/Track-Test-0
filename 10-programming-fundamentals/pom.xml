@@ -20,6 +20,7 @@
     <modules>
         <module>10-basics</module>
         <module>20-oop</module>
+        <module>30-unit-testing</module>
     </modules>
 
 </project>
