@@ -64,6 +64,13 @@ Since Selenium Manager is still in Beta we'll not cover it in this course.
    4. Replace `<driver-file-name>` with the name of your browser driver.
    5. Run your test again.
    6. If everything works correctly, a browser window should pop open and the test should succeed
+   7. Are you getting an error stating 403 forbidden (among other things)? This happens quite often nowadays. There's a workaround for this. We will add certain options to our Chromedriver instance.
+   Add the following to your getChromeDriverUrl() method:
+   ```java
+   ChromeOptions options = new ChromeOptions();
+   options.addArguments("--remote-allow-origins=*");
+   ```
+   Now pass this ChromeOptions object on with the initialization of our ChromeDriver instance. Try again, everything should work now.
 
 
 ## Summary
