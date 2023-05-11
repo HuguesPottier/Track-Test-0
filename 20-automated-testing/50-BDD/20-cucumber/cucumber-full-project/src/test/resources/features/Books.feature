@@ -7,7 +7,6 @@ Feature: Books feature
       | title           | author               |
       | Black           | Dirk Bracke          |
       | Het engelenhuis | Dirk Bracke          |
-      | De Conferentie  | Christian De Coninck |
       | Slagschaduw     | Jo Claes             |
       | Dodenmarkt      | Christian De Coninck |
       | Rollercoaster   | Dirk Bracke          |
