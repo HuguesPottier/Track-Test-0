@@ -1,5 +1,7 @@
 package basic;
 
+import java.util.Arrays;
+
 public class ArraysCodelab01 {
 
     public static void main(String[] args) {
@@ -9,7 +11,7 @@ public class ArraysCodelab01 {
     }
 
     /**
-     * Implement this method so that it prints out the 3th element of the input array
+     * Implement this method so that it prints out the 3rd element of the input array
      */
     public static void printOutThirdElement(String[] input) {
 

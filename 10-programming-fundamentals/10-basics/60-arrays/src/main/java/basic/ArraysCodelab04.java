@@ -17,7 +17,7 @@ public class ArraysCodelab04 {
     }
 
     /**
-     * Implement this method so that it returns the first and second element of the given array
+     * Implement this method so that it returns the sum of the first and second element of the given array
      */
     public static int sumOfFirstAndSecondElement(int[] array) {
         return 0;
