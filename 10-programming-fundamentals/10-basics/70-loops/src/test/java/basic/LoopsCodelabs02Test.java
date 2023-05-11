@@ -35,7 +35,7 @@ public class LoopsCodelabs02Test {
 
     @Test
     void giveCoke() {
-        LoopsCodelabs02.giveTicket(4);
+        LoopsCodelabs02.giveCoke(4);
         Assertions.assertThat(outContent.toString()).isEqualToNormalizingNewlines("""
                 Giving a Coke
                 Giving a Coke
