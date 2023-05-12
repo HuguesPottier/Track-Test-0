@@ -11,7 +11,6 @@ public class VTCodelab03 {
         // ----------------
         // Declare and initialize a boolean variable
         // Print the result using: System.out.println("Printing boolean with value: " + <YOUR_VARIABLE_NAME>);
-        System.out.println();
     }
 
 }
