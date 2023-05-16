@@ -8,8 +8,9 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static basic.solutions.codelab02.Main.getPerson;
-import static basic.solutions.codelab02.Main.sendLetter;
+import static basic.codelab02.Main.getPerson;
+import static basic.codelab02.Main.sendLetter;
+
 
 class MainTest {
 
