@@ -30,7 +30,7 @@ public class AlienTest {
                 .callConstructor()
                 .expectField("firstName").toHaveValue("Unidentified")
                 .expectField("lastName").toHaveValue("Unidentified")
-                .expectField("numberOfHead").toHaveValue(1);
+                .expectField("numberOfHeads").toHaveValue(1);
     }
 
     @Test
@@ -39,7 +39,7 @@ public class AlienTest {
                 .callConstructor("firstName", "lastName")
                 .expectField("firstName").toHaveValue("firstName")
                 .expectField("lastName").toHaveValue("lastName")
-                .expectField("numberOfHead").toHaveValue(1);
+                .expectField("numberOfHeads").toHaveValue(1);
     }
 
     @Test
@@ -48,7 +48,7 @@ public class AlienTest {
                 .callConstructor("firstName", "lastName", 5)
                 .expectField("firstName").toHaveValue("firstName")
                 .expectField("lastName").toHaveValue("lastName")
-                .expectField("numberOfHead").toHaveValue(5);
+                .expectField("numberOfHeads").toHaveValue(5);
     }
 
     @Test
