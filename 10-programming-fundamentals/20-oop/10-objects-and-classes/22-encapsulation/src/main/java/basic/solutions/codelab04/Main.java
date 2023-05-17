@@ -1,7 +1,5 @@
 package basic.solutions.codelab04;
 
-import basic.solutions.codelab03.house.*;
-import basic.solutions.codelab03.staff.*;
 import basic.solutions.codelab04.house.*;
 import basic.solutions.codelab04.staff.*;
 

@@ -31,4 +31,8 @@ public class BankAccount {
                 "balance=" + balance +
                 '}';
     }
+
+    public Money getBalance() {
+        return balance;
+    }
 }
