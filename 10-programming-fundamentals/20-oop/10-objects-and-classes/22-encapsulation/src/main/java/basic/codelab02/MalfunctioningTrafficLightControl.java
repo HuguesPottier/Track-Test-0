@@ -16,4 +16,8 @@ public class MalfunctioningTrafficLightControl {
             case "pink" -> trafficLight.color = "purple";
         }
     }
+
+    public String toString() {
+        return "The light is: " + trafficLight;
+    }
 }
